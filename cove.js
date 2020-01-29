@@ -102,7 +102,7 @@ var tilts, PHIstr;
 function CalcCove(func) {
   try {
 
-  let RePlot=false,  B=true,  bb = function () { if(B) bugsp.apply(this, arguments); }
+  let RePlot=false,  B=false,  bb = function () { if(B) bugsp.apply(this, arguments); }
 
   if(undefined != func) {
     RePlot = true;
