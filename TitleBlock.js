@@ -2,7 +2,7 @@
 function TitleBlock(ctx,  w=-350,  nl=-5,  fh=.8, ft="Arial") {    //  "-" => right; bottom 5 lines
   var x=0, y=0,  dy=0,  font=fh+"rem "+ft;
   try {
-    dy = fh*16+6;  buglnsp("  fh, dy=", fh, dy,  "  font= ",font);
+    dy = fh*16*1.3;  buglnsp("  fh, dy=", fh, dy,  "  font= ",font);
       /// buglncs(nl, dy);
     if(w < 0) { w = -w;    x = Math.min(cvsW, x2S(SXX)) - w; }        //  right w pxls
          else {            x = Math.max(   0, x2S(SXN)) + 2; }       //  left
