@@ -1,5 +1,5 @@
 
-const SXN=-1.5, SXX=1.5,  SYN=-1.5, SYX=1.5;
+const SXN=-10, SXX=10,  SYN=-10, SYX=10;
 var SXn, SXx,  SYn, SYx;
 
 var ctxA,  cvsW, cvsH;
@@ -46,6 +46,8 @@ function HandleBodyLoad() {
   S2x = Z2x;
   S2y = Z2y;
   S2u = Z2u;
+
+  bugln(document.lastModified);
 
   CalcCove();
 
@@ -160,12 +162,12 @@ function CalcCove(func) {
   // for(c=1: cols(Yc)) {
   for(let c=0; c<Yc.length; c++) {
     if(Yc[c] < W) {
-      str = sprintf("Tilt="+ Ts[c] +" not feasible. Blade exposure (=", Yc[c], ") is less than desired cove width (W=", W, ") \n");
+      str = sprintf("Width="+ W +" & Depth="+ d +" at Tilt="+ Ts[c] +" not feasible. Blade exposure (=", Yc[c], ") is less than desired cove width (W=", W, ") \n");
       EMsg( str );
       return;
       }
      else if(60 < Az[c]) {
-      str = sprintf("Tilt=", Ts[c], " iffy; Approach angle (=", Az[c], ") is greater then 60 degrees \n");
+      str = sprintf("Width="+ W +" & Depth="+ d +" at Tilt=", Ts[c], " iffy; Approach angle (=", Az[c], ") is greater then 60 degrees \n");
       EMsg( str );
       }
     }
@@ -256,26 +258,28 @@ function PlotCove() {
     //  title banner
   let ttl = "Coverama Cove Profiles";
   pushStyle(ctxA, 1, "#000");
-  let fh = 3;
+  let fh = 2*(cvsH/30)/16,  yff = fh*16+fh*16/3;     bugln("fh, yff=", fh, yff);
   ctxA.font = "bold "+ fh +"rem Arial";
-  let tw = ctxA.measureText(ttl).width;
-  let xff = (cvsW - tw)/2;                                  //  centered
-  ctxA.fillText(ttl,  xff,  fh*16+fh*16/3);   //  approx baseline
+  let tw = ctxA.measureText(ttl).width;  buglnsp("  tw, th=", tw, ctxA.measureText(ttl).height);
+  let xff = (cvsW - tw)/2;
+  ctxA.fillText(ttl,  xff,  yff);   //  approx baseline
   popStyle(ctxA);                                       //  [un-BOLD]
 
     //  title block
   pushStyle(ctxA,  .5, "#000000");
   /// ctxA.rect(cvsW-450, cvsH-140, 450, 140);
-  let TitleLine = new TitleBlock(ctxA,  -300,  -6,  1.0, "Arial");
+  /// let TitleLine = new TitleBlock(ctxA,  -300,  -6,  1.0, "Arial");
+  fh = Math.min(1,  cvsH/8 / 16 / 6);   bug("fh=", fh);
+  let TitleLine = new TitleBlock(ctxA,  -cvsW/4,  -6,  fh, "Arial");
   TitleLine(0,  "COVERAMA");
   TitleLine(1,  "Cove  Width:"+ nf(W, 3) +"  Depth:"+nf(d, 3));
   TitleLine(2,  "Blade  Diam:"+ nf(D, 3) +"  Thick:"+ nf(K, 3));
   TitleLine(3,  "    Tilts:   "+ Ts.sprintf(1, 6));
   TitleLine(4,  "   Angles:"+ Az.sprintf(1, 6));
+  TitleLine(5,  document.lastModified);
   TitleLine(5,  "Pgm: Saintrain",  -1);
   /// ctxA.stroke();
   popStyle(ctxA);
 
   } catch(err) { EMsg("PlotCove", err); }
 }
-
