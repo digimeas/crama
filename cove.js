@@ -47,7 +47,7 @@ function HandleBodyLoad() {
   S2y = Z2y;
   S2u = Z2u;
 
-  bugln(document.lastModified);
+  /// bugln(document.lastModified);
 
   CalcCove();
 
@@ -90,7 +90,7 @@ function HandleResize() {
   cvsA.setAttribute("height", cvsH);
   cvsA.ctx.PS.SetCvsDims(cvsW, cvsH);
   cvsA.ctx.PS.SetPltLims();
-  buglnsp(" cvs=", cvsW, cvsH);
+  /// buglnsp(" cvs=", cvsW, cvsH);
 
   ///??? SSetScale(cvsW, cvsH,  .05);
 
@@ -258,9 +258,9 @@ function PlotCove() {
     //  title banner
   let ttl = "Coverama Cove Profiles";
   pushStyle(ctxA, 1, "#000");
-  let fh = 2*(cvsH/30)/16,  yff = fh*16+fh*16/3;     bugln("fh, yff=", fh, yff);
+  let fh = 2*(cvsH/30)/16,  yff = fh*16+fh*16/3;     /// bugln("fh, yff=", fh, yff);
   ctxA.font = "bold "+ fh +"rem Arial";
-  let tw = ctxA.measureText(ttl).width;  buglnsp("  tw, th=", tw, ctxA.measureText(ttl).height);
+  let tw = ctxA.measureText(ttl).width;  /// buglnsp("  tw, th=", tw, ctxA.measureText(ttl).height);
   let xff = (cvsW - tw)/2;
   ctxA.fillText(ttl,  xff,  yff);   //  approx baseline
   popStyle(ctxA);                                       //  [un-BOLD]
@@ -269,7 +269,7 @@ function PlotCove() {
   pushStyle(ctxA,  .5, "#000000");
   /// ctxA.rect(cvsW-450, cvsH-140, 450, 140);
   /// let TitleLine = new TitleBlock(ctxA,  -300,  -6,  1.0, "Arial");
-  fh = Math.min(1,  cvsH/8 / 16 / 3);   bug("fh=", fh);
+  fh = Math.min(1,  cvsH/8 / 16 / 3);   /// bug("fh=", fh);
   let TitleLine = new TitleBlock(ctxA,  cvsW/3, 0,  -6,  fh, "Arial");
   TitleLine(0,  "COVERAMA");
   TitleLine(1,  "Cove  Width:"+ nf(W, 3) +"  Depth:"+nf(d, 3));
@@ -283,3 +283,4 @@ function PlotCove() {
 
   } catch(err) { EMsg("PlotCove", err); }
 }
+
