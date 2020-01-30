@@ -269,7 +269,7 @@ function PlotCove() {
   pushStyle(ctxA,  .5, "#000000");
   /// ctxA.rect(cvsW-450, cvsH-140, 450, 140);
   /// let TitleLine = new TitleBlock(ctxA,  -300,  -6,  1.0, "Arial");
-  fh = Math.min(1,  cvsH/8 / 16 / 6);   bug("fh=", fh);
+  fh = Math.min(1,  cvsH/8 / 16 / 3);   bug("fh=", fh);
   let TitleLine = new TitleBlock(ctxA,  cvsW/4, 0,  -6,  fh, "Arial");
   TitleLine(0,  "COVERAMA");
   TitleLine(1,  "Cove  Width:"+ nf(W, 3) +"  Depth:"+nf(d, 3));
