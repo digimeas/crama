@@ -88,6 +88,7 @@ function HandleResize() {
   cvsA.setAttribute("height", cvsH);
   cvsA.ctx.PS.SetCvsDims(cvsW, cvsH);
   cvsA.ctx.PS.SetPltLims();
+  buglnsp(" cvs=", cvsW, cvsH);
 
   ///??? SSetScale(cvsW, cvsH,  .05);
 
