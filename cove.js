@@ -270,7 +270,7 @@ function PlotCove() {
   /// ctxA.rect(cvsW-450, cvsH-140, 450, 140);
   /// let TitleLine = new TitleBlock(ctxA,  -300,  -6,  1.0, "Arial");
   fh = Math.min(1,  cvsH/8 / 16 / 6);   bug("fh=", fh);
-  let TitleLine = new TitleBlock(ctxA,  -cvsW/4, 0,  -6,  fh, "Arial");
+  let TitleLine = new TitleBlock(ctxA,  cvsW/4, 0,  -6,  fh, "Arial");
   TitleLine(0,  "COVERAMA");
   TitleLine(1,  "Cove  Width:"+ nf(W, 3) +"  Depth:"+nf(d, 3));
   TitleLine(2,  "Blade  Diam:"+ nf(D, 3) +"  Thick:"+ nf(K, 3));
